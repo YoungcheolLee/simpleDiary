@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 /* [설명]
    - 다이어리 "작성" 기능을 담당하는 컴포넌트
 */
-const DiaryEditor = () => {
+const DiaryEditor = ({ onCreate }) => {
   //useRef함수를 호출하여 어떠한 반환값을 authorInput 이란 상수에 담아줌
   //useRef()는 DOM요소를 선택가능하게 하는 기능
   const authorInput = useRef();
@@ -36,7 +36,15 @@ const DiaryEditor = () => {
       return;
     }
 
+    onCreate(state.author, state.content, state.emotion);
     alert("일기 저장성공!");
+
+    //저장 후 editor 부분 초기화 작업
+    setState({
+      author: "",
+      content: "",
+      emotion: 1,
+    });
   };
 
   return (

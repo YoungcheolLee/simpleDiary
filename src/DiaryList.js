@@ -2,6 +2,7 @@ import DiaryItem from "./DiaryItem.js";
 
 const DiaryList = ({ diaryList }) => {
   console.log(diaryList);
+
   return (
     <div className="DiaryList">
       <h4>{diaryList.length} 개의 일기가 있습니다!</h4>

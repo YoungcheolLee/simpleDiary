@@ -1,6 +1,6 @@
 import DiaryItem from "./DiaryItem.js";
 
-const DiaryList = ({ diaryList, onRemove }) => {
+const DiaryList = ({ diaryList, onRemove, onEdit }) => {
   console.log(diaryList);
 
   return (
@@ -10,7 +10,12 @@ const DiaryList = ({ diaryList, onRemove }) => {
       {/* Props로 받은 diaryList를 배열로 랜더링 하는 구문 */}
       <div>
         {diaryList.map((item) => (
-          <DiaryItem key={item.id} {...item} onRemove={onRemove} />
+          <DiaryItem
+            key={item.id}
+            {...item}
+            onRemove={onRemove}
+            onEdit={onEdit}
+          />
         ))}
       </div>
     </div>

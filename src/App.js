@@ -34,10 +34,26 @@ function App() {
     setData(newDiaryList);
   };
 
+  /** #수정하기 기능의 onEdit 로직설명
+   *  setData를 통해서 어떠한 값을 전달함
+   *  변경하는 값은 어떻게만드냐?
+   *  - onEdit함수는 어떠한 특정 일기 데이터를 수정하는 함수 이기때문에 매개변수로 받은 targetId와 원본데이터의 id를 비교한다.
+   *  - 원본데이터 배열에 mpa 함수를 이용하여 모든 요소를 순회하면서 새로운 배열을 만든다.
+   *  - 삼항연산자를 통해 원본배열의 id와 매개변수로 받은 targetId가 같다면 ? 수정한 데이터로 배열을 바꿔주고 그렇지 않다면 기존 데이터를 출력해라.
+   */
+
+  const onEdit = (targetId, newContent) => {
+    setData(
+      data.map((item) =>
+        item.id === targetId ? { ...item, content: newContent } : item
+      )
+    );
+  };
+
   return (
     <div className="App">
       <DiaryEditor onCreate={onCreate} />
-      <DiaryList diaryList={data} onRemove={onRemove} />
+      <DiaryList diaryList={data} onRemove={onRemove} onEdit={onEdit} />
     </div>
   );
 }
